@@ -43,6 +43,10 @@ def main(argv):
         # Visit the parse tree with the custom visitor
         visitor.visit(tree)
 
+    print("Stack contents:")
+    for item in visitor.stack:
+        print(item)
+
 
 if __name__ == '__main__':
     main(sys.argv)
