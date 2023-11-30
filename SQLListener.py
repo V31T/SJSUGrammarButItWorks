@@ -26,30 +26,12 @@ class SQLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SQLParser#createStatement.
-    def enterCreateStatement(self, ctx:SQLParser.CreateStatementContext):
-        pass
-
-    # Exit a parse tree produced by SQLParser#createStatement.
-    def exitCreateStatement(self, ctx:SQLParser.CreateStatementContext):
-        pass
-
-
     # Enter a parse tree produced by SQLParser#insertStatement.
     def enterInsertStatement(self, ctx:SQLParser.InsertStatementContext):
         pass
 
     # Exit a parse tree produced by SQLParser#insertStatement.
     def exitInsertStatement(self, ctx:SQLParser.InsertStatementContext):
-        pass
-
-
-    # Enter a parse tree produced by SQLParser#selectStatement.
-    def enterSelectStatement(self, ctx:SQLParser.SelectStatementContext):
-        pass
-
-    # Exit a parse tree produced by SQLParser#selectStatement.
-    def exitSelectStatement(self, ctx:SQLParser.SelectStatementContext):
         pass
 
 
@@ -62,6 +44,60 @@ class SQLListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SQLParser#selectStatement.
+    def enterSelectStatement(self, ctx:SQLParser.SelectStatementContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#selectStatement.
+    def exitSelectStatement(self, ctx:SQLParser.SelectStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#createStatement.
+    def enterCreateStatement(self, ctx:SQLParser.CreateStatementContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#createStatement.
+    def exitCreateStatement(self, ctx:SQLParser.CreateStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#createDatabaseStatement.
+    def enterCreateDatabaseStatement(self, ctx:SQLParser.CreateDatabaseStatementContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#createDatabaseStatement.
+    def exitCreateDatabaseStatement(self, ctx:SQLParser.CreateDatabaseStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#deleteStatement.
+    def enterDeleteStatement(self, ctx:SQLParser.DeleteStatementContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#deleteStatement.
+    def exitDeleteStatement(self, ctx:SQLParser.DeleteStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#updateStatement.
+    def enterUpdateStatement(self, ctx:SQLParser.UpdateStatementContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#updateStatement.
+    def exitUpdateStatement(self, ctx:SQLParser.UpdateStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#whereClause.
+    def enterWhereClause(self, ctx:SQLParser.WhereClauseContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#whereClause.
+    def exitWhereClause(self, ctx:SQLParser.WhereClauseContext):
+        pass
+
+
     # Enter a parse tree produced by SQLParser#condition.
     def enterCondition(self, ctx:SQLParser.ConditionContext):
         pass
@@ -71,21 +107,75 @@ class SQLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SQLParser#operator.
-    def enterOperator(self, ctx:SQLParser.OperatorContext):
+    # Enter a parse tree produced by SQLParser#valueList.
+    def enterValueList(self, ctx:SQLParser.ValueListContext):
         pass
 
-    # Exit a parse tree produced by SQLParser#operator.
-    def exitOperator(self, ctx:SQLParser.OperatorContext):
+    # Exit a parse tree produced by SQLParser#valueList.
+    def exitValueList(self, ctx:SQLParser.ValueListContext):
         pass
 
 
-    # Enter a parse tree produced by SQLParser#columnName.
-    def enterColumnName(self, ctx:SQLParser.ColumnNameContext):
+    # Enter a parse tree produced by SQLParser#setValList.
+    def enterSetValList(self, ctx:SQLParser.SetValListContext):
         pass
 
-    # Exit a parse tree produced by SQLParser#columnName.
-    def exitColumnName(self, ctx:SQLParser.ColumnNameContext):
+    # Exit a parse tree produced by SQLParser#setValList.
+    def exitSetValList(self, ctx:SQLParser.SetValListContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#setVal.
+    def enterSetVal(self, ctx:SQLParser.SetValContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#setVal.
+    def exitSetVal(self, ctx:SQLParser.SetValContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#columnList.
+    def enterColumnList(self, ctx:SQLParser.ColumnListContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#columnList.
+    def exitColumnList(self, ctx:SQLParser.ColumnListContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#columnSpecList.
+    def enterColumnSpecList(self, ctx:SQLParser.ColumnSpecListContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#columnSpecList.
+    def exitColumnSpecList(self, ctx:SQLParser.ColumnSpecListContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#columnSpec.
+    def enterColumnSpec(self, ctx:SQLParser.ColumnSpecContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#columnSpec.
+    def exitColumnSpec(self, ctx:SQLParser.ColumnSpecContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#columnType.
+    def enterColumnType(self, ctx:SQLParser.ColumnTypeContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#columnType.
+    def exitColumnType(self, ctx:SQLParser.ColumnTypeContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#columnConstraint.
+    def enterColumnConstraint(self, ctx:SQLParser.ColumnConstraintContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#columnConstraint.
+    def exitColumnConstraint(self, ctx:SQLParser.ColumnConstraintContext):
         pass
 
 
@@ -98,30 +188,30 @@ class SQLListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SQLParser#columnDefinition.
-    def enterColumnDefinition(self, ctx:SQLParser.ColumnDefinitionContext):
+    # Enter a parse tree produced by SQLParser#databaseName.
+    def enterDatabaseName(self, ctx:SQLParser.DatabaseNameContext):
         pass
 
-    # Exit a parse tree produced by SQLParser#columnDefinition.
-    def exitColumnDefinition(self, ctx:SQLParser.ColumnDefinitionContext):
-        pass
-
-
-    # Enter a parse tree produced by SQLParser#dataType.
-    def enterDataType(self, ctx:SQLParser.DataTypeContext):
-        pass
-
-    # Exit a parse tree produced by SQLParser#dataType.
-    def exitDataType(self, ctx:SQLParser.DataTypeContext):
+    # Exit a parse tree produced by SQLParser#databaseName.
+    def exitDatabaseName(self, ctx:SQLParser.DatabaseNameContext):
         pass
 
 
-    # Enter a parse tree produced by SQLParser#literalValue.
-    def enterLiteralValue(self, ctx:SQLParser.LiteralValueContext):
+    # Enter a parse tree produced by SQLParser#literal.
+    def enterLiteral(self, ctx:SQLParser.LiteralContext):
         pass
 
-    # Exit a parse tree produced by SQLParser#literalValue.
-    def exitLiteralValue(self, ctx:SQLParser.LiteralValueContext):
+    # Exit a parse tree produced by SQLParser#literal.
+    def exitLiteral(self, ctx:SQLParser.LiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by SQLParser#operator.
+    def enterOperator(self, ctx:SQLParser.OperatorContext):
+        pass
+
+    # Exit a parse tree produced by SQLParser#operator.
+    def exitOperator(self, ctx:SQLParser.OperatorContext):
         pass
 
 
