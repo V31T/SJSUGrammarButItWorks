@@ -19,18 +19,8 @@ class SQLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SQLParser#createStatement.
-    def visitCreateStatement(self, ctx:SQLParser.CreateStatementContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by SQLParser#insertStatement.
     def visitInsertStatement(self, ctx:SQLParser.InsertStatementContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by SQLParser#selectStatement.
-    def visitSelectStatement(self, ctx:SQLParser.SelectStatementContext):
         return self.visitChildren(ctx)
 
 
@@ -39,18 +29,58 @@ class SQLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SQLParser#selectStatement.
+    def visitSelectStatement(self, ctx:SQLParser.SelectStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SQLParser#createStatement.
+    def visitCreateStatement(self, ctx:SQLParser.CreateStatementContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SQLParser#condition.
     def visitCondition(self, ctx:SQLParser.ConditionContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SQLParser#operator.
-    def visitOperator(self, ctx:SQLParser.OperatorContext):
+    # Visit a parse tree produced by SQLParser#valueList.
+    def visitValueList(self, ctx:SQLParser.ValueListContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SQLParser#columnName.
-    def visitColumnName(self, ctx:SQLParser.ColumnNameContext):
+    # Visit a parse tree produced by SQLParser#setValList.
+    def visitSetValList(self, ctx:SQLParser.SetValListContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SQLParser#setVal.
+    def visitSetVal(self, ctx:SQLParser.SetValContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SQLParser#columnList.
+    def visitColumnList(self, ctx:SQLParser.ColumnListContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SQLParser#columnSpecList.
+    def visitColumnSpecList(self, ctx:SQLParser.ColumnSpecListContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SQLParser#columnSpec.
+    def visitColumnSpec(self, ctx:SQLParser.ColumnSpecContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SQLParser#columnType.
+    def visitColumnType(self, ctx:SQLParser.ColumnTypeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SQLParser#columnConstraint.
+    def visitColumnConstraint(self, ctx:SQLParser.ColumnConstraintContext):
         return self.visitChildren(ctx)
 
 
@@ -59,18 +89,13 @@ class SQLVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SQLParser#columnDefinition.
-    def visitColumnDefinition(self, ctx:SQLParser.ColumnDefinitionContext):
+    # Visit a parse tree produced by SQLParser#literal.
+    def visitLiteral(self, ctx:SQLParser.LiteralContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by SQLParser#dataType.
-    def visitDataType(self, ctx:SQLParser.DataTypeContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by SQLParser#literalValue.
-    def visitLiteralValue(self, ctx:SQLParser.LiteralValueContext):
+    # Visit a parse tree produced by SQLParser#operator.
+    def visitOperator(self, ctx:SQLParser.OperatorContext):
         return self.visitChildren(ctx)
 
 
