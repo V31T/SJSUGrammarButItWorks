@@ -7,14 +7,11 @@ from MySQLVisitor import MySQLVisitor
 
 def main(argv):
     # Provide the path to your SQL file
-    sql_file_path = r"C:\Users\Henry Pham\Desktop\VSCode\CS152proj\example.sql"
+    sql_file_path = "./example.txt"
 
-    # Read the content of the SQL file
+    # Read the content of the SQL file & stores each line into a list
     with open(sql_file_path, 'r') as file:
-        sql_input = file.read()
-
-    # Split the input into individual lines (assuming each line contains a separate SQL statement)
-    sql_statements = sql_input.split('\n')
+        sql_statements = file.readlines()
 
     # Create a custom visitor
     visitor = MySQLVisitor()
@@ -26,18 +23,12 @@ def main(argv):
             continue
 
         # Create an input stream for each SQL statement
-        input_stream = FileStream(sql_statement)
+        input_stream = InputStream(sql_statement)
 
         # Create a lexer
         lexer = SQLLexer(input_stream)
-
-        # Create a token stream
         token_stream = CommonTokenStream(lexer)
-
-        # Create a parser
         parser = SQLParser(token_stream)
-
-        # Parse the SQL statement to get the parse tree
         tree = parser.sqlScript()
 
         # Visit the parse tree with the custom visitor
