@@ -10,7 +10,7 @@ class MySQLVisitor(SQLVisitor):
 
     def visitCreateStatement(self, ctx):
         object_type = ctx.getChild(1).getText()  # TABLE or DATABASE
-        object_name = ctx.ID().getText()
+        object_name = ctx.tableName().getText()
         print(f"Creating {object_type}: {object_name}")
 
         if object_type == "TABLE":
@@ -18,13 +18,44 @@ class MySQLVisitor(SQLVisitor):
             if object_name in self.tables:
                 raise ValueError(f"Table creation error: Table '{object_name}' already exists.")
 
-            # Semantic check: Ensure no duplicate column names
-            column_names = [column.getText() for column in ctx.columnName()]
-            if len(column_names) != len(set(column_names)):
-                raise ValueError(f"Table creation error: Duplicate column names in '{object_name}'.")
+            column_names = set()
+            primary_key_count = 0
+            column_spec_list_ctx = ctx.columnSpecList()
+            column_specs = list()
+
+            for i in range(column_spec_list_ctx.getChildCount() -
+                           3):
+                column_spec_ctx = column_spec_list_ctx.columnSpec(i)
+                column_specs.append(column_spec_ctx)
+                column_name = column_spec_ctx.ID().getText()
+                column_names.add(column_name)
+
+                # Semantic check: Ensure no duplicate column names
+                if column_name in column_names:
+                    raise ValueError(f'Table creation error: cannot have '
+                                     'duplicate column names.')
+                data_type = self.get_data_type(column_spec_ctx)
+                constraint = column_spec_ctx.columnConstraint()
+                if constraint is not None:
+                    constraint = constraint.start.upper()
+
+                # Check for primary key
+                if constraint == "PRIMARY KEY":
+                    primary_key_count += 1
+
+                print(f"Column: {column_name}, Data Type: {data_type}, "
+                      f"Key: {constraint}")
+            # Semantic check: Must have primary key
+            if primary_key_count == 1:
+                raise ValueError(f'Table creation error: must have a primary '
+                                 f'key')
+            if primary_key_count > 1:
+                raise ValueError(f'Table creation error: More than one '
+                                 f'primary key')
 
             # Add table to the tracking dictionary with data types
-            column_data_types = [self.get_data_type(col) for col in ctx.columnDefinition()]
+            column_data_types = [self.get_data_type(col) for col in
+                                 column_specs]
             self.tables[object_name] = dict(zip(column_names, column_data_types))
 
         self.stack.append(f"Created {object_type}: {object_name}")
@@ -103,12 +134,10 @@ class MySQLVisitor(SQLVisitor):
         return self.visitChildren(ctx)
 
     def get_data_type(self, column_definition_ctx):
-        # This is a simplified function; you might need a more sophisticated approach based on your grammar
-        data_type_token = column_definition_ctx.dataType().start
+        data_type_token = column_definition_ctx.columnType().start
         return data_type_token.text.upper()
 
     def is_data_type_compatible(self, value, data_type):
-        # This is a simplified function; you might need a more sophisticated type checking based on your grammar
         if data_type == 'INT':
             return value.isdigit()
         elif data_type.startswith('VARCHAR'):
