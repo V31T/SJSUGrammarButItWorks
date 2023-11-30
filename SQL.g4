@@ -13,14 +13,9 @@ statement: selectStatement
 
 // Statements
 insertStatement: INSERT INTO tableName ('(' columnList ')')? VALUES '('valueList ')';
-dropStatement: DROP (TABLE | DATABASE) (tableName | databaseName);
-selectStatement: SELECT (columnList)? FROM tableName whereClause?;
+dropStatement: DROP TABLE tableName;
+selectStatement: SELECT (columnList)? FROM tableName;
 createStatement: CREATE TABLE tableName '(' columnSpecList ')';
-createDatabaseStatement: CREATE DATABASE databaseName;
-deleteStatement: DELETE FROM tableName whereClause;
-updateStatement: UPDATE tableName SET setValList whereClause;
-
-whereClause: WHERE condition (OR condition)?;
 
 condition: ID operator literal;
 valueList: literal (',' literal)*;
@@ -32,12 +27,10 @@ columnList: ID (',' ID)* | '*';
 columnSpecList: columnSpec (',' columnSpec)*;
 columnSpec: ID columnType columnConstraint?;
 columnType: INT | VARCHAR ('(' INT_LITERAL ')')? | DATE;
-columnConstraint: (PRIMARY KEY);
+columnConstraint: PRIMARY KEY;
 
 tableName: ID;
-databaseName: STRING_LITERAL;
-literal: INT_LITERAL | STRING_LITERAL;
-
+literal: INT_LITERAL | "'" STRING_LITERAL "'";
 
 // Most Common Queries
 CREATE: 'CREATE';
@@ -50,12 +43,10 @@ UPDATE: 'UPDATE';
 // Most Common Keywords
 INTO: 'INTO';
 FROM: 'FROM';
-WHERE: 'WHERE';
 PRIMARY: 'PRIMARY';
 KEY: 'KEY';
 TABLE:'TABLE';
 VALUES: 'VALUES';
-DATABASE: 'DATABASE';
 SET: 'SET';
 
 // Common Data types
